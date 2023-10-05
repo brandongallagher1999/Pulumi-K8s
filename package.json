@@ -1,0 +1,17 @@
+{
+  "name": "personal",
+  "main": "src/main.ts",
+  "devDependencies": {
+    "@types/node": "^16",
+    "prettier": "^3.0.3"
+  },
+  "scripts": {
+    "format": "prettier . --write"
+  },
+  "dependencies": {
+    "@pulumi/azure": "5.52.0",
+    "@pulumi/azure-native": "2.10.0",
+    "@pulumi/azuread": "^5.42.0",
+    "@pulumi/pulumi": "3.86.0"
+  }
+}
