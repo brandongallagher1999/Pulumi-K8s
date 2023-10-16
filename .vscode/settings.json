@@ -1,3 +1,6 @@
 {
-  "editor.formatOnSave": true
+    "editor.formatOnSave": true,
+    "yaml.schemas": {
+        "https://json.schemastore.org/github-workflow.json": "file:///c%3A/Users/crypt/OneDrive/Desktop/projects/Pulumi-K8s/.github/workflows/pulumi.yaml"
+    }
 }

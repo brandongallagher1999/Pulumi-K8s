@@ -1,0 +1,25 @@
+name: Pulumi Preview (Pull Requests)
+
+on:
+    pull_request:
+        branches: [main]
+
+jobs:
+    preview:
+        name: Preview Pulumi Changes
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v2
+              name: Checkout main
+
+            - uses: oven-sh/setup-bun@v1
+              with:
+                  bun-version: latest
+
+            - run: bun install
+              name: Install Deps
+
+            - uses: pulumi/actions@v3
+              with:
+                  command: preview
+                  stack-name: personal/dev
