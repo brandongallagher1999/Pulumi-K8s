@@ -1,5 +1,5 @@
 config:
-  azure-native:location: EastCanada
-  azure:location: eastcanada
-  azure:name: "dev"
-  pulumi:template: azure-typescript
+    azure-native:location: EastCanada
+    azure:location: eastcanada
+    azure:name: "dev"
+    pulumi:template: azure-typescript

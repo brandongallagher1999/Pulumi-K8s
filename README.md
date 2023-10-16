@@ -4,12 +4,12 @@ Welcome to the Comprehensive AKS Deployment repository! This repository serves a
 
 ## 📋 Table of Contents
 
-- [👋 Introduction](#introduction)
-- [✨ Features](#features)
-- [🚀 Getting Started](#getting-started)
-- [💡 Usage](#usage)
-- [🤝 Contributing](#contributing)
-- [📄 License](#license)
+-   [👋 Introduction](#introduction)
+-   [✨ Features](#features)
+-   [🚀 Getting Started](#getting-started)
+-   [💡 Usage](#usage)
+-   [🤝 Contributing](#contributing)
+-   [📄 License](#license)
 
 ## 👋 Introduction
 
@@ -17,11 +17,11 @@ This repository provides you with everything you need to kickstart your AKS depl
 
 ## ✨ Features
 
-- **RBAC Roles**: Implement Role-Based Access Control to enforce granular access permissions within your AKS cluster.
+-   **RBAC Roles**: Implement Role-Based Access Control to enforce granular access permissions within your AKS cluster.
 
-- **Prometheus Monitoring**: Set up comprehensive monitoring for your applications and infrastructure using Prometheus, an open-source monitoring and alerting toolkit.
+-   **Prometheus Monitoring**: Set up comprehensive monitoring for your applications and infrastructure using Prometheus, an open-source monitoring and alerting toolkit.
 
-- **Load Balancing Magic**: Efficiently balance incoming traffic to your AKS services, ensuring high availability and optimal performance.
+-   **Load Balancing Magic**: Efficiently balance incoming traffic to your AKS services, ensuring high availability and optimal performance.
 
 ## 🚀 Getting Started
 
