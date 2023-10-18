@@ -188,6 +188,44 @@ async function createBindings(
     });
 }
 
+async function createHelmCharts(
+    cluster: azure_native.containerservice.ManagedCluster,
+) {
+    const nginxIngress = new kubernetes.helm.v3.Release(
+        "nginxIngress",
+        {
+            name: "nginx",
+            chart: "ingress-nginx",
+            version: "4.8.2",
+            cleanupOnFail: true,
+            forceUpdate: true,
+            repositoryOpts: {
+                repo: "https://kubernetes.github.io/ingress-nginx",
+            },
+        },
+        {
+            dependsOn: cluster,
+        },
+    );
+
+    const prometheusStack = new kubernetes.helm.v3.Release(
+        "prometheus",
+        {
+            chart: "kube-prometheus-stack",
+            name: "prometheus",
+            version: "51.9.2",
+            cleanupOnFail: true,
+            forceUpdate: true,
+            repositoryOpts: {
+                repo: "https://prometheus-community.github.io/helm-charts",
+            },
+        },
+        {
+            dependsOn: cluster,
+        },
+    );
+}
+
 async function connectToCluster(name: string, resourceGroup: string) {
     Bun.spawn(
         `az aks get-credentials --resource-group ${resourceGroup} --name ${name}`.split(
@@ -204,6 +242,7 @@ async function createResources() {
     const roles = await createAADRoles();
     createRBAC(cluster);
     createBindings(roles[0], roles[1]);
+    createHelmCharts(cluster);
 }
 
 createResources();
