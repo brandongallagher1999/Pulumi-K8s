@@ -78,6 +78,7 @@ async function createAADRoles() {
         owners: [currentUser.objectId],
         securityEnabled: true,
     });
+    return [developerGroup, sreGroup];
 }
 
 async function createRBAC(
@@ -145,6 +146,48 @@ async function createRBAC(
     );
 }
 
+async function createBindings(
+    developerGroup: azuread.Group,
+    sreGroup: azuread.Group,
+) {
+    const DeveloperBinding = new kubernetes.rbac.v1.ClusterRoleBinding(
+        "DeveloperBinding",
+        {
+            metadata: {
+                name: "DeveloperBinding",
+            },
+            roleRef: {
+                apiGroup: "rbac.authorization.k8s.io",
+                kind: "ClusterRole",
+                name: "Developer",
+            },
+            subjects: [
+                {
+                    kind: "Group",
+                    name: developerGroup.objectId,
+                },
+            ],
+        },
+    );
+
+    const SreBinding = new kubernetes.rbac.v1.ClusterRoleBinding("SREBinding", {
+        metadata: {
+            name: "SREBinding",
+        },
+        roleRef: {
+            apiGroup: "rbac.authorization.k8s.io",
+            kind: "ClusterRole",
+            name: "SRE",
+        },
+        subjects: [
+            {
+                kind: "Group",
+                name: sreGroup.objectId,
+            },
+        ],
+    });
+}
+
 async function connectToCluster(name: string, resourceGroup: string) {
     Bun.spawn(
         `az aks get-credentials --resource-group ${resourceGroup} --name ${name}`.split(
@@ -158,7 +201,9 @@ async function createResources() {
     cluster.name.apply((name) =>
         connectToCluster(name, `${config.require("name")}-resources`),
     );
-    createAADRoles();
+    const roles = await createAADRoles();
+    createRBAC(cluster);
+    createBindings(roles[0], roles[1]);
 }
 
 createResources();
