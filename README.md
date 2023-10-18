@@ -8,7 +8,6 @@ Welcome to the Comprehensive AKS Deployment repository! This repository serves a
 -   [✨ Features](#features)
 -   [🚀 Getting Started](#getting-started)
 -   [💡 Usage](#usage)
--   [🤝 Contributing](#contributing)
 -   [📄 License](#license)
 
 ## 👋 Introduction
@@ -17,11 +16,11 @@ This repository provides you with everything you need to kickstart your AKS depl
 
 ## ✨ Features
 
--   **RBAC Roles**: Implement Role-Based Access Control to enforce granular access permissions within your AKS cluster.
+-   [RBAC Roles](https://kubernetes.io/docs/reference/access-authn-authz/rbac/) - Implement Role-Based Access Control to enforce granular access permissions within your AKS cluster.
 
--   **Prometheus Monitoring**: Set up comprehensive monitoring for your applications and infrastructure using Prometheus, an open-source monitoring and alerting toolkit.
+-   [Prometheus Monitoring](https://prometheus.io/) - Set up comprehensive monitoring for your applications and infrastructure using Prometheus, an open-source monitoring and alerting toolkit.
 
--   **Load Balancing Magic**: Efficiently balance incoming traffic to your AKS services, ensuring high availability and optimal performance.
+-   [Load Balancing Magic](https://www.nginx.com/products/nginx-ingress-controller/) - Efficiently balance incoming traffic to your AKS services, ensuring high availability and optimal performance.
 
 ## 🚀 Getting Started
 
@@ -34,11 +33,20 @@ To get started with this comprehensive AKS deployment, follow these simple steps
 
 ## 💡 Usage
 
-Explore the folders and documentation within this repository to understand how each component works and how they integrate to create a robust AKS environment. Use the provided scripts and templates as a foundation for your AKS deployment, adapting them to your specific needs.
+1. Modify the pulumi config to your stack's liking.
+2.
 
-## 🤝 Contributing
+```bash
+# If you're not already logged into your Azure Tenant:
 
-We welcome contributions from the community! If you have improvements, bug fixes, or new features to contribute, please follow our [contribution guidelines](CONTRIBUTING.md).
+az login
+
+# Then
+
+cd /src/
+pulumi preview
+pulumi up
+```
 
 ## 📄 License
 
@@ -46,4 +54,4 @@ This project is licensed under the [MIT License](LICENSE). Feel free to use, mod
 
 ---
 
-We hope this comprehensive AKS deployment starter pack simplifies your Kubernetes journey and empowers you to build secure, monitored, and highly available applications on Azure Kubernetes Service. Happy deploying!
+I hope this comprehensive AKS deployment starter pack simplifies your Kubernetes journey and empowers you to build secure, monitored, and highly available applications on Azure Kubernetes Service. Happy deploying!
